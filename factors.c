@@ -53,7 +53,7 @@ void factor(char *s, unsigned int line_num)
 	long long int p, q, n;
 	long long int i = 2;
 
-	n = atoi(s);
+	n = atoll(s);
 	while (i <= n / 2)
 	{
 		if (n % i == 0)
