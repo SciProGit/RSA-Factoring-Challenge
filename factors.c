@@ -54,12 +54,6 @@ void factor(char *s, unsigned int line_num)
 	long long int p, q, n;
 	long long int i = 0;
 
-	while (s[i])
-	{
-		if (!isdigit(s[1]))
-			exit(EXIT_FAILURE);
-	}
-	i = 2;
 	n = atoll(s);
 	while (i <= n / 2)
 	{
