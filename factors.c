@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stddef.h>
 
-void factor(char *s, unsigned int line_num);
+long long int factor(long long int n);
 /**
  ** main - entry point
  ** @argc: number of arguments
@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 	char s[500];
 	size_t line_count = 0;
 	FILE *fp;
+	long long int n, p, q;
 
 	if (argc != 2)
 	{
@@ -27,8 +28,10 @@ int main(int argc, char **argv)
 	{
 		while (fgets(s, sizeof(s), fp) != NULL)
 		{
-			line_count++;
-			factor(s, line_count);
+			n = atoll(s);
+			q = factor(n);
+			p = n / q;
+			printf("%lld=%lld*%lld\n", n, p, q);
 		}
 		fclose(fp);
 	}
@@ -44,25 +47,35 @@ int main(int argc, char **argv)
 
 /**
  ** factor - factorises a number
- ** @s: string
- ** @line_num: line number in the file
- ** Return: Nothing
+ ** @n: number to be factored
+ ** Return: returns factor
  **/
-void factor(char *s, unsigned int line_num)
+long long int factor(long long int n)
 {
-	long long int p, q, n;
-	long long int i = 2;
+	long long int i = 11;
 
-	n = atoll(s);
+	if (n % 2)
+		return (2);
+	if (n % 3)
+		return (3);
+	if (n % 5)
+		return (5);
+	if (n % 7)
+		return (7);
 	while (i <= n / 2)
 	{
 		if (n % i == 0)
-		{
-			q = i;
-			p = n / q;
-			printf("%lld=%lld*%lld\n", n, p, q);
 			break;
-		}
-		i++;
+		i += 2;
+		if (n % i == 0)
+			break;
+		i += 4;
+		if (n % i == 0)
+			break;
+		i += 2;
+		if (n % i == 0)
+			break;
+		i += 2;
 	}
+	return (i);
 }
