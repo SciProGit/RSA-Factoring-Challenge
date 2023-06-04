@@ -59,7 +59,7 @@ void factor(char *s, unsigned int line_num)
 		if (!isdigit(s[1]))
 			exit(EXIT_FAILURE);
 	}
-
+	i = 2;
 	n = atoll(s);
 	while (i <= n / 2)
 	{
