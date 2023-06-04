@@ -3,7 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <stddef.h>
-#include <ctype.h>
 
 void factor(char *s, unsigned int line_num);
 /**
@@ -52,7 +51,7 @@ int main(int argc, char **argv)
 void factor(char *s, unsigned int line_num)
 {
 	long long int p, q, n;
-	long long int i = 0;
+	long long int i = 2;
 
 	n = atoll(s);
 	while (i <= n / 2)
